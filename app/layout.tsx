@@ -2,8 +2,10 @@ import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 
 import React from 'react';
+import { cookies } from 'next/headers';
 import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
 import { AppShell } from '@/components/AppShell/AppShell';
+import { Login } from '@/components/Login/Login';
 import { theme } from '../theme';
 
 export const metadata = {
@@ -11,7 +13,10 @@ export const metadata = {
   description: 'Aerial sports library',
 };
 
-export default function RootLayout({ children }: { children: any }) {
+export default async function RootLayout({ children }: { children: any }) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token');
+
   return (
     <html lang="pl" {...mantineHtmlProps}>
       <head>
@@ -24,7 +29,11 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <AppShell>{children}</AppShell>
+          {token?.value !== process.env.NEXT_PUBLIC_TOKEN ? (
+            <Login />
+          ) : (
+            <AppShell>{children}</AppShell>
+          )}
         </MantineProvider>
       </body>
     </html>
