@@ -3,11 +3,12 @@ import { Exercise } from '@/components/Exercise/Exercise';
 
 export const dynamic = 'force-dynamic';
 
-interface HoopPageProps {
-  params: { slug: string };
-}
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-const HoopPage = async ({ params }: HoopPageProps) => {
+const HoopPage = async ({ params }: Props) => {
   const myParams = await params;
 
   if (!myParams) {
