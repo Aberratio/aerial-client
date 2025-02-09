@@ -10,7 +10,16 @@ export const Login = () => {
   const [token, setToken] = useState('');
 
   return (
-    <Flex direction="column" gap="md" justify="center" align="center" h="100vh" w="90vw" m="auto">
+    <Flex
+      direction="column"
+      gap="md"
+      justify="center"
+      align="center"
+      h="100vh"
+      w="90vw"
+      m="auto"
+      style={{ maxWidth: '400px' }}
+    >
       <Title order={2}>Cześć! 👋</Title>
       <Text>Podaj token, aby polatać 🤸‍♂️</Text>
       <PasswordInput
