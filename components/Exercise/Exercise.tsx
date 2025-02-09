@@ -4,6 +4,7 @@ import { Carousel } from '@mantine/carousel';
 import { Badge, Flex, Text, Title } from '@mantine/core';
 import { ExerciseItem } from '@/types/ExerciseItem';
 import { ExerciseSlide } from './ExerciseSlide';
+import { VideoPlayer } from './VideoPlayer';
 import classes from './Exercise.module.css';
 
 export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
@@ -35,6 +36,8 @@ export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
         <Badge color="yellow">{exercise.type}</Badge>
       </Flex>
       <Text>{exercise.description}</Text>
+
+      {exercise.video && <VideoPlayer url={exercise.video.path} />}
     </Flex>
   );
 };

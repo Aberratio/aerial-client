@@ -1,4 +1,5 @@
 import { PhotoItem } from './PhotoItem';
+import { VideoItem } from './VideoItem';
 
 export interface ExerciseItem {
   slug: string;
@@ -10,6 +11,7 @@ export interface ExerciseItem {
   mainImage: PhotoItem;
   gallery?: PhotoItem[];
   tags: TagItem[];
+  video?: VideoItem;
 }
 
 export type TagItem = {

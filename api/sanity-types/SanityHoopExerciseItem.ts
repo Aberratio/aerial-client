@@ -1,5 +1,6 @@
 import { ExerciseItem, TagItem } from '@/types/ExerciseItem';
 import { mapToPhotoItem, SanityPhotoItem } from './SanityPhotoItem';
+import { mapToVideoItem, SanityVideoItem } from './SanityVideoItem';
 
 export interface SanityHoopExerciseItem {
   _id: string;
@@ -14,6 +15,7 @@ export interface SanityHoopExerciseItem {
   under_hoop: boolean;
   in_hoop: boolean;
   on_hoop: boolean;
+  video?: SanityVideoItem;
 }
 
 export const mapToExerciseItem = (exercise: SanityHoopExerciseItem): ExerciseItem | null => {
@@ -48,5 +50,6 @@ export const mapToExerciseItem = (exercise: SanityHoopExerciseItem): ExerciseIte
       exercise.on_hoop ? { label: 'Na kółku', value: 'on_hoop' } : null,
       exercise.under_hoop ? { label: 'Pod kółkiem', value: 'under_hoop' } : null,
     ].filter(Boolean) as TagItem[],
+    video: exercise.video ? mapToVideoItem(exercise.video) : undefined,
   };
 };
