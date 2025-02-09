@@ -44,7 +44,7 @@ export const mapToExerciseItem = (exercise: SanityHoopExerciseItem): ExerciseIte
     type: exercise.type === 'figure' ? 'Figurka' : 'Zestaw',
     description: exercise.description,
     mainImage: mapToPhotoItem(exercise.main_image),
-    gallery: [],
+    gallery: exercise.gallery ? exercise.gallery.map(mapToPhotoItem) : [],
     tags: [
       exercise.in_hoop ? { label: 'W kółku', value: 'in_hoop' } : null,
       exercise.on_hoop ? { label: 'Na kółku', value: 'on_hoop' } : null,
