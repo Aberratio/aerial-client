@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Badge, Button, Card, Group, Image, Text } from '@mantine/core';
+import { Badge, Button, Card, Flex, Image, Text } from '@mantine/core';
 import { ExerciseItem } from '@/types/ExerciseItem';
 
 interface ExerciseSummaryProps {
@@ -16,18 +16,25 @@ export const ExerciseSummary = ({ exercise }: ExerciseSummaryProps) => {
   };
 
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder style={{ width: 300 }}>
+    <Card
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      style={{ width: 300, height: 600, cursor: 'pointer' }}
+      onClick={goToExercise}
+    >
       <Card.Section>
         <Image src={exercise.mainImage.path} height={360} alt={exercise.mainImage.alt} />
       </Card.Section>
 
-      <Group justify="space-between" mt="md" mb="xs">
+      <Flex direction="column" justify="space-between" mt="xs" mb="xs" gap="xs">
         <Text fw={500}>{exercise.name}</Text>
         <Badge color="pink">{exercise.level}</Badge>
-      </Group>
+      </Flex>
 
-      <Text size="sm" c="dimmed">
-        {exercise.summary}
+      <Text size="sm" c="dimmed" h={100}>
+        {exercise.summary.slice(0, 140)}...
       </Text>
 
       <Button

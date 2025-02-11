@@ -9,7 +9,7 @@ export const VideoPlayer = ({ url }: { url: string }) => {
         src={url}
         title="My video player"
         style={{ border: 0 }}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; webkitallowfullscreen; mozallowfullscreen"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; webkitallowfullscreen; mozallowfullscreen"
         allowFullScreen
       />
     </AspectRatio>
