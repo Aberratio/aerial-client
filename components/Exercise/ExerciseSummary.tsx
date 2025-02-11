@@ -34,7 +34,7 @@ export const ExerciseSummary = ({ exercise }: ExerciseSummaryProps) => {
       </Flex>
 
       <Text size="sm" c="dimmed" h={100}>
-        {exercise.summary.slice(0, 140)}...
+        {exercise.summary.length > 140 ? `${exercise.summary.slice(0, 140)}...` : exercise.summary}
       </Text>
 
       <Button

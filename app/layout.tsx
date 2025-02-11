@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>
+        <MantineProvider theme={theme} defaultColorScheme="dark">
           {token?.value !== process.env.NEXT_PUBLIC_TOKEN ? (
             <Login />
           ) : (

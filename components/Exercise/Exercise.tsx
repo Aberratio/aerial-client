@@ -18,7 +18,15 @@ export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
 
   return (
     <Flex direction="column" gap="md" p="md">
-      <Flex direction="column" gap="xs" maw={800} mx="auto">
+      <Flex
+        direction="column"
+        gap="xs"
+        maw={800}
+        mx="auto"
+        align="flex-start"
+        justify="flex-start"
+        w="100%"
+      >
         <Title order={2}>{exercise.name}</Title>
         <Flex gap="xs">
           <Badge color="pink">{exercise.level}</Badge>
@@ -40,7 +48,15 @@ export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
       >
         {slides}
       </Carousel>
-      <Flex direction="column" gap="xs" maw={800} mx="auto">
+      <Flex
+        direction="column"
+        gap="xs"
+        maw={800}
+        mx="auto"
+        align="flex-start"
+        justify="flex-start"
+        w="100%"
+      >
         <Text size="lg">{exercise.description}</Text>
       </Flex>
       {exercise.video && <VideoPlayer url={exercise.video.path} />}
