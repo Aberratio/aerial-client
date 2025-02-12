@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { IconLock } from '@tabler/icons-react';
 import { Button, Flex, PasswordInput, Text, Title } from '@mantine/core';
 import { createLocaleCookie } from '@/app/action';
+import { Logo } from '../Logo/Logo';
 
 export const Login = () => {
   const icon = <IconLock size={18} stroke={1.5} />;
@@ -20,6 +21,7 @@ export const Login = () => {
       m="auto"
       style={{ maxWidth: '400px' }}
     >
+      <Logo size={200} />
       <Title order={2}>Cześć! 👋</Title>
       <Text>Podaj token, aby polatać 🤸‍♂️</Text>
       <PasswordInput
