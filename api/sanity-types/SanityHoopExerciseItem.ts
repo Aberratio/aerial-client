@@ -16,6 +16,8 @@ export interface SanityHoopExerciseItem {
   in_hoop: boolean;
   on_hoop: boolean;
   video?: SanityVideoItem;
+  key_points?: string[];
+  common_mistakes?: string[];
 }
 
 export const mapToExerciseItem = (exercise: SanityHoopExerciseItem): ExerciseItem | null => {
@@ -51,5 +53,7 @@ export const mapToExerciseItem = (exercise: SanityHoopExerciseItem): ExerciseIte
       exercise.under_hoop ? { label: 'Pod kółkiem', value: 'under_hoop' } : null,
     ].filter(Boolean) as TagItem[],
     video: exercise.video ? mapToVideoItem(exercise.video) : undefined,
+    keyPoints: exercise.key_points,
+    commonMistakes: exercise.common_mistakes,
   };
 };

@@ -35,6 +35,7 @@ export const AppShell = ({ children }: AppShellProps) => {
         </Flex>
       </MantineAppShell.Header>
       <MantineAppShell.Navbar p="md">
+        <NavLink href="/" label="Strona główna" leftSection={<Text>🏠</Text>} />
         <NavLink href="/hoop" label="Aerial Hoop" leftSection={<Text>🐉</Text>} />
         {/* <NavLink href="/hammock" label="Hamaki" leftSection={<Text>🐱‍🏍</Text>} />
         <NavLink href="/yoga" label="Yoga" leftSection={<Text>🧘‍♀️</Text>} /> */}

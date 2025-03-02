@@ -12,6 +12,8 @@ export interface ExerciseItem {
   gallery?: PhotoItem[];
   tags: TagItem[];
   video?: VideoItem;
+  keyPoints?: string[];
+  commonMistakes?: string[];
 }
 
 export type TagItem = {
