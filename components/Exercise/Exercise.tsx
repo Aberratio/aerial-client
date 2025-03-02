@@ -2,16 +2,58 @@
 
 import { IconAlertCircle, IconInfoCircle } from '@tabler/icons-react';
 import { Carousel } from '@mantine/carousel';
-import { Badge, Flex, List, Stepper, Text, ThemeIcon, Title } from '@mantine/core';
+import { Badge, Button, Flex, List, Stepper, Text, ThemeIcon, Title } from '@mantine/core';
 import { ExerciseItem } from '@/types/ExerciseItem';
 import { ExerciseSlide } from './ExerciseSlide';
-import { VideoPlayer } from './VideoPlayer';
 import classes from './Exercise.module.css';
 
 export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
   const images = [exercise.mainImage, ...(exercise.gallery || [])];
 
   const slides = images?.map((image) => <ExerciseSlide key={image._ref} url={image.path} />);
+
+  const openVideoOnFullScreen = () => {
+    if (exercise.video) {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+      overlay.style.zIndex = '9999';
+      overlay.style.display = 'flex';
+      overlay.style.justifyContent = 'center';
+      overlay.style.alignItems = 'center';
+
+      const video = document.createElement('video');
+      video.src = exercise.video.path;
+      video.controls = true;
+      video.autoplay = true;
+      video.style.maxWidth = '90%';
+      video.style.maxHeight = '90%';
+      video.style.outline = 'none';
+
+      const closeButton = document.createElement('button');
+      closeButton.innerHTML = '&#10006;';
+      closeButton.style.position = 'absolute';
+      closeButton.style.top = '20px';
+      closeButton.style.right = '20px';
+      closeButton.style.background = 'none';
+      closeButton.style.border = 'none';
+      closeButton.style.color = 'white';
+      closeButton.style.fontSize = '30px';
+      closeButton.style.cursor = 'pointer';
+
+      closeButton.onclick = () => {
+        document.body.removeChild(overlay);
+      };
+
+      overlay.appendChild(video);
+      overlay.appendChild(closeButton);
+      document.body.appendChild(overlay);
+    }
+  };
 
   if (!exercise) {
     return null;
@@ -132,7 +174,18 @@ export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
         </Flex>
       )}
 
-      {exercise.video && <VideoPlayer url={exercise.video.path} />}
+      {exercise.video && (
+        <Flex direction="column" gap="xs" mx="auto" align="center" w="100%" mt="xl">
+          <Button
+            variant="gradient"
+            gradient={{ from: 'grape', to: 'violet', deg: 152 }}
+            style={{ width: 300 }}
+            onClick={openVideoOnFullScreen}
+          >
+            Pokaż film
+          </Button>
+        </Flex>
+      )}
     </Flex>
   );
 };
