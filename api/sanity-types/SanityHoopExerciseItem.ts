@@ -18,6 +18,7 @@ export interface SanityHoopExerciseItem {
   video?: SanityVideoItem;
   key_points?: string[];
   common_mistakes?: string[];
+  steps?: string[];
 }
 
 export const mapToExerciseItem = (exercise: SanityHoopExerciseItem): ExerciseItem | null => {
@@ -55,5 +56,6 @@ export const mapToExerciseItem = (exercise: SanityHoopExerciseItem): ExerciseIte
     video: exercise.video ? mapToVideoItem(exercise.video) : undefined,
     keyPoints: exercise.key_points,
     commonMistakes: exercise.common_mistakes,
+    steps: exercise.steps,
   };
 };

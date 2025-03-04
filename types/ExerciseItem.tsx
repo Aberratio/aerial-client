@@ -14,6 +14,7 @@ export interface ExerciseItem {
   video?: VideoItem;
   keyPoints?: string[];
   commonMistakes?: string[];
+  steps?: string[];
 }
 
 export type TagItem = {

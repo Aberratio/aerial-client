@@ -92,7 +92,7 @@ export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
         {slides}
       </Carousel>
 
-      {exercise.keyPoints && (
+      {exercise.steps && (
         <Flex
           direction="column"
           gap="xs"
@@ -107,8 +107,8 @@ export const Exercise = ({ exercise }: { exercise: ExerciseItem }) => {
             Figurka krok po kroku
           </Title>
           <Stepper orientation="vertical" active={0}>
-            {exercise.keyPoints?.map((point, index) => (
-              <Stepper.Step key={point} label={`Krok ${index + 1}`} description={point} />
+            {exercise.steps?.map((step, index) => (
+              <Stepper.Step key={step} label={`Krok ${index + 1}`} description={step} />
             ))}
           </Stepper>
         </Flex>
